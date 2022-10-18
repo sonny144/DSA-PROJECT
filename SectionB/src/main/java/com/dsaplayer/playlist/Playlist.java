@@ -56,12 +56,12 @@ public class Playlist {
     }
 
     // Inserts song with new filename based on playlist file j
-    public void insertSong(File file) throws IOException {
+    public void insertSong(File file, String nm) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 
         String j = null;    // Init to prevent exception
         while((j = br.readLine()) != null) {
-            pl.addNode(new Song(j));
+            pl.addNode(new Song(j, nm));
         }
 
         br.close();

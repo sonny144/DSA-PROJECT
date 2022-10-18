@@ -40,12 +40,14 @@ In every feature package should contain a class named appropriate to its parent 
 
 A feature may include an `init` class, which contains functions to initialise the feature.  
 
-The program may be run either by directly running `App.java` located under `/SectionB/src/main/java/com/dsaplayer/` or building from source using Maven and running the generated binaries (done automatically under default Maven settings).
+The program may be run either by directly running `App.java` located under `/SectionB/src/main/java/com/dsaplayer/` or building from source using Maven and running the generated binaries (done automatically under default Maven settings).  
+
 To build from source, input:
 `mvn clean compile package -f "$<projdir>/SectionB/pom.xml"`  
 where `$<projdir>` is the path to the root of your clone.  
 
-Program notes:
+### Program notes
 
 - `DLL` = Doubly Linked List (not lib)
 - The function for adding songs to playlist is contained in `Playlist.java` as it is necessary for the class to refer to itself to alter entries in the DLL
+- `Service` files include all functions for managing a feature unless otherwise specified, such as in the case of above.
