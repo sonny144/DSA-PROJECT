@@ -71,6 +71,7 @@ public class CLI {
                     playMenu();
                     break;
                 case 5:
+                    // TODO: this needs to generate anonymous objects!!
                     System.out.print("Input playlist name: ");
                     Playlist pln = new Playlist(); pln.setPlname(sc.next());    // Creates new playlist *object* with name inputted; no nodes!
 
@@ -81,8 +82,9 @@ public class CLI {
                     break;
                 case 0:
                     System.out.print("Input playlist name: ");
-                    Playlist pls = new Playlist(); pls.setPlname(sc.next());
-
+                    Playlist pldbg = new Playlist(); pldbg.setPlname(sc.next());
+                    
+                    for(int i = 0; i < 100; )
                     break;
                 default:
                     System.out.println("Invalid selection!");

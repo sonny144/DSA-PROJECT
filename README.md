@@ -58,3 +58,24 @@ where `$<projdir>` is the path to the root of your clone.
 - `DLL` = Doubly Linked List (not lib)
 - The function for adding songs to playlist is contained in `Playlist.java` as it is necessary for the class to refer to itself to alter entries in the DLL
 - `Service` files include all functions for managing a feature unless otherwise specified, such as in the case of above.
+
+## Members
+
+### Group 2
+
+```text
+222094494 - Mark Nyambe
+222112425 - Christy Diamonds
+222119187 - Treasure Kamwi
+222062568 - Ache Victor
+222125152 - Kevin Iipopi Wonena
+222046880 - Festus Alpheus
+222017813 - David Natangwe Mbidi
+```
+
+### Group 5
+
+```text
+222125373 - Elijah Hilukiluah
+222017740 - Ethan Cosburn
+```
