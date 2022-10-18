@@ -27,3 +27,13 @@ SectionB                // May contain configuration files, such as pom.xml; the
 | | ...
 | ...
 ```
+
+## Section B
+
+The program is written in Java, built using Maven, using the MVCS (model, view, controller, service) architecture industry standard.  
+
+For the purposes of organisation, as the program is relatively small, the packages are organised such that every class is contained in its relevant feature (e.g. `playlist`) as opposed to separated by class, model, service, etc.  
+
+In every feature package should contain a class named appropriate to its parent folder, being the model; the controller/services are named (individually) the same across all folders, but separated by package.  
+
+A feature may include an `init` class, which contains functions to initialise the feature.
