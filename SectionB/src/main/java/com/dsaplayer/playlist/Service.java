@@ -4,7 +4,7 @@ import com.dsaplayer.playlist.Playlist.PlaylistNode;
 
 public class Service {
     // create_playlist as shown in pseudocode is located in Playlist.java due to access issues
-    public void play_track(Playlist pl, String key) {
+    public void playTrack(Playlist pl, String key) {
         
     }
 
@@ -21,4 +21,16 @@ public class Service {
         return false;
     }
 
+    public Playlist findPlaylist(String pln) {
+        if(Playlist.plGlobal != null) {
+            for(int i = 0; i <= Playlist.plGlobal.size() - 1; i++) {
+                if(Playlist.plGlobal.get(i).plname == pln) {
+                    return Playlist.plGlobal.get(i);
+                }
+            }
+            return null;
+        } else {
+            return null;
+        }
+    }
 }

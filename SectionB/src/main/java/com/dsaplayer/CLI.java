@@ -4,11 +4,13 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.dsaplayer.playlist.Playlist;
+import com.dsaplayer.playlist.Service;
 import com.dsaplayer.song.Song;
 
 // Controller for the command line interface.
 public class CLI {
     static Scanner sc = new Scanner(System.in);
+    static Service sv = new Service();
     
     public static void mainMenu() {
         System.out.println(
@@ -80,7 +82,13 @@ public class CLI {
                     System.out.println("Playlist created! Add songs in the menu.");
                     break;
                 case 5:
-                    playMenu();
+                    System.out.print("Input playlist name to add to: ");
+                    Playlist plAdd = sv.findPlaylist(sc.next());
+                    System.out.print("Input song name and author: ");
+                    Song newSong = new Song(sc.next(), sc.next());
+
+                    plAdd.addNode(newSong);
+                    System.out.println("Song added successfully!");
                     break;
                 case 6:
                     playMenu();
@@ -90,9 +98,11 @@ public class CLI {
                     Playlist pldbg = new Playlist(); pldbg.setPlname(sc.next());
                     
                     for(int i = 0; i < 100; i++) {
-                        Song song = new Song("song"+Integer.toString(i), "artist"+Integer.toString(i)); // Automatically defines e.g. song1, song2, etc.
-                        pldbg.addNode(song);
+                        Song dbgSong = new Song("song"+Integer.toString(i), "artist"+Integer.toString(i)); // Automatically defines e.g. song1, song2, etc.
+                        pldbg.addNode(dbgSong);
                     }
+
+                    Playlist.plGlobal.add(pldbg);
 
                     System.out.print("Debug playlist created!");
                     break;
