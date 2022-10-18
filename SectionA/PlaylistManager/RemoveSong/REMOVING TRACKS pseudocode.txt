@@ -1,0 +1,20 @@
+REMOVING TRACKS 
+START
+ Read track
+ IF head ==null
+     DISPLAY “There are no tracks in the playlist”
+      ELSE IF
+    track = head. Data // checks to see if it is the first song 
+     Head = head. nextAddress // head now changes to the next song in the playlist 
+       ELSE IF 
+        track = rear.data // checks to see if it is the last song in the playlist
+      rear = rear.prevAddress // rear now changes to the last song in the playlist
+      ENDIF
+      ENDIF
+   ENDIF 
+     Display “The track was successfully deleted”
+END
+  
+  
+   
+
