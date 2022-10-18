@@ -37,7 +37,7 @@ The program is written in Java, built using Maven, using the MVCS (model, view, 
 It is an emulation of a music player, not a production player. This is done for demo purposes; the program is used primarily to demonstrate the linkedlist. The program provides verbose output in support of this goal.  
 Though not immediately functional as presented in the assignment, the program has been designed in such a way that it can easily be modified to provide actual music output; libraries to play these files are, however, not provided as dependencies.  
 
-A GUI is not provided due to time constraints.  
+A GUI is not provided due to time constraints; all features are accessed using command line.  
 
 For the purposes of organisation, as the program is relatively small, the packages are organised such that every class is contained in its relevant feature (e.g. `playlist`) as opposed to separated by class, model, service, etc.  
 
