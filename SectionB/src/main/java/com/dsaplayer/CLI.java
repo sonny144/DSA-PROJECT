@@ -52,6 +52,7 @@ public class CLI {
             +   "3 - Search for song in playlist\n"
             +   "4 - Create new playlist\n"
             +   "5 - Add new song to playlist\n"
+            +   "6 - Remove song from playlist\n"
             +   "99- [DEBUG] Create sample playlist with 100 songs\n"
         );
         
@@ -81,6 +82,9 @@ public class CLI {
                 case 5:
                     playMenu();
                     break;
+                case 6:
+                    playMenu();
+                    break;
                 case 99:
                     System.out.print("Input playlist name: ");
                     Playlist pldbg = new Playlist(); pldbg.setPlname(sc.next());
@@ -89,11 +93,13 @@ public class CLI {
                         Song song = new Song("song"+Integer.toString(i), "artist"+Integer.toString(i)); // Automatically defines e.g. song1, song2, etc.
                         pldbg.addNode(song);
                     }
+
+                    System.out.print("Debug playlist created!");
                     break;
                 default:
                     System.out.println("Invalid selection!");
                     break;
-            } mainMenu();
+            } playlistMenu();
 
         } catch(InputMismatchException ex) {
             System.out.println("Invalid input type!");
@@ -128,11 +134,11 @@ public class CLI {
                     System.out.println("Invalid selection!");
                     mainMenu();
                     break;
-            } mainMenu();
+            } playMenu();
             
         } catch(InputMismatchException ex) {
             System.out.println("Invalid input type!");
-            playlistMenu();
+            playMenu();
         }
     }
 }
