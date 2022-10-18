@@ -1,0 +1,47 @@
+Adding A Track 
+For Empty Playlist: 
+START
+ Read track
+   IF front ==null // checks to see if the playlist is empty
+   Front = newNode (track)
+   Rear =newNode(track)
+   ENDIF 
+END
+
+Add After Another Track:
+START
+Read track
+ IF prev_node ==null
+ DISPLAY “The previous track cannot be null”
+ENDIF
+ new_node = track  // puts the data into the new node 
+ new_node.nextAddress =prev_node.nextAddress // make the next of the new track as the next of previous track
+ prev_node.nextAddress = new_node // make the next of the previous track as  the new track now
+ new_node.prevAddress = prev_node // makes previous track as previous of new track
+ IF (new_node.nextAddress!=null) THEN // now changes the next of the previous track
+new_node.next.prevAddress = new_node
+ ENDIF
+END
+
+
+
+
+Add at the end of the playlist
+START
+ Read track
+  new_node = track // put the data into the node 
+   current_node  = head
+   new_node.nextAddress = null; // since it will be going to end , the next must point to null
+   IF head == null
+        new_node. prevAddress = null // if playlist is empty , the new track must go to the    front
+        head = new_node(track)
+    ENDIF
+     WHILE current_node.next ! =null THEN // will go through playlist until it finds the last track
+    current_node = current_node. next 
+     ENDWHILE
+      current_node.nextAddress = track // changes the next of the last track
+       new_node.prevAddress = currentnode // makes the last track the previous of the newly added track
+END
+
+
+

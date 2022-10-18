@@ -1,0 +1,8 @@
+play_song(playlist, song_num)
+current= playlist.head
+
+for(i=0 to song_num-1)do
+current_song= current_song.next
+end for
+play_audio(current_song.data)
+end
