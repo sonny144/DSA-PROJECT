@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.dsaplayer.playlist.Playlist;
+import com.dsaplayer.song.Song;
 
 // Controller for the command line interface.
 public class CLI {
@@ -13,7 +14,7 @@ public class CLI {
         System.out.println(
                 "---------------\n"
             +   "DSAPlayer CLI\n"
-            +   "---------------"
+            +   "---------------\n"
             +   "1 - Playlist management\n"
             +   "2 - Play menu\n"
         );
@@ -32,7 +33,7 @@ public class CLI {
                     System.out.println("Invalid selection!");
                     mainMenu();
                     break;
-            }
+            } mainMenu();
 
         } catch(InputMismatchException ex) {
             System.out.println("Invalid input type!");
@@ -45,19 +46,22 @@ public class CLI {
                 "---------------\n"
             +   "Playlist Manager\n"
             +   "---------------\n"
+            +   "0 - Return to main menu\n"
             +   "1 - List all playlists\n"
             +   "2 - List all songs in playlist\n"
-            +   "3 - Search playlists\n"
-            +   "4 - Search for song in playlist\n"
-            +   "5 - Create new playlist\n"
-            +   "6 - Add new song to playlist\n"
-            +   "0 - [DEBUG] Create sample playlist with 100 songs\n"
+            +   "3 - Search for song in playlist\n"
+            +   "4 - Create new playlist\n"
+            +   "5 - Add new song to playlist\n"
+            +   "99- [DEBUG] Create sample playlist with 100 songs\n"
         );
         
         try {
             int in = sc.nextInt();
 
             switch (in) {
+                case 0:
+                    mainMenu();
+                    break;
                 case 1:
                     playlistMenu();
                     break;
@@ -68,28 +72,28 @@ public class CLI {
                     playMenu();
                     break;
                 case 4:
-                    playMenu();
-                    break;
-                case 5:
                     // TODO: this needs to generate anonymous objects!!
                     System.out.print("Input playlist name: ");
                     Playlist pln = new Playlist(); pln.setPlname(sc.next());    // Creates new playlist *object* with name inputted; no nodes!
 
                     System.out.println("Playlist created! Add songs in the menu.");
                     break;
-                case 6:
+                case 5:
                     playMenu();
                     break;
-                case 0:
+                case 99:
                     System.out.print("Input playlist name: ");
                     Playlist pldbg = new Playlist(); pldbg.setPlname(sc.next());
                     
-                    for(int i = 0; i < 100; )
+                    for(int i = 0; i < 100; i++) {
+                        Song song = new Song("song"+Integer.toString(i), "artist"+Integer.toString(i)); // Automatically defines e.g. song1, song2, etc.
+                        pldbg.addNode(song);
+                    }
                     break;
                 default:
                     System.out.println("Invalid selection!");
                     break;
-            }
+            } mainMenu();
 
         } catch(InputMismatchException ex) {
             System.out.println("Invalid input type!");
@@ -102,6 +106,7 @@ public class CLI {
                 "---------------\n"
             +   "Play Menu\n"
             +   "---------------\n"
+            +   "0 - Return to main menu\n"
             +   "1 - Play (linear)\n"
             +   "2 - Play (loop)\n"
         );
@@ -110,6 +115,9 @@ public class CLI {
             int in = sc.nextInt();
 
             switch (in) {
+                case 0:
+                    mainMenu();
+                    break;
                 case 1:
                     playlistMenu();
                     break;
@@ -120,7 +128,7 @@ public class CLI {
                     System.out.println("Invalid selection!");
                     mainMenu();
                     break;
-            }
+            } mainMenu();
             
         } catch(InputMismatchException ex) {
             System.out.println("Invalid input type!");
