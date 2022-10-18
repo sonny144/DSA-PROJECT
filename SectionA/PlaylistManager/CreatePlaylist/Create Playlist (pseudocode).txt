@@ -1,8 +1,10 @@
-create playlist()
+
+start
+function create_playlist()
 songs<=100
 playlist= create_new_playlist()
 for(i=0 to songs-1) do 
 add_song(playlist,i)
 end for
 return_playlist
-end 
+end function
