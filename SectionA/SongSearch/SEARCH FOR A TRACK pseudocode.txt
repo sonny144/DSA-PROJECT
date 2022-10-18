@@ -1,0 +1,14 @@
+SEARCH FOR A TRACK:
+START
+ Read Song
+ current_node = front
+  DO WHILE current_node! =null
+    IF current_node.data = song //searches to see if the song is in the playlist
+     THEN Display current_node.data // if found, it will then display /play the song
+    BREAK
+      current_node= current_node. nextAddress // goes to next track if song not found
+       ELSE DISPLAY “The song does not exist in this playlist”
+     ENDIF
+     ENDIF
+  ENDWHILE
+END 
