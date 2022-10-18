@@ -1,3 +1,5 @@
+
+start
 create playlist()
 songs<=100
 playlist= create_new_playlist()
