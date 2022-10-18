@@ -34,6 +34,11 @@ Note that some algorithms present in Section B may not correlate one-to-one with
 
 The program is written in Java, built using Maven, using the MVCS (model, view, controller, service) architecture industry standard.  
 
+It is an emulation of a music player, not a production player. This is done for demo purposes; the program is used primarily to demonstrate the linkedlist. The program provides verbose output in support of this goal.  
+Though not immediately functional as presented in the assignment, the program has been designed in such a way that it can easily be modified to provide actual music output; libraries to play these files are, however, not provided as dependencies.  
+
+A GUI is not provided due to time constraints.  
+
 For the purposes of organisation, as the program is relatively small, the packages are organised such that every class is contained in its relevant feature (e.g. `playlist`) as opposed to separated by class, model, service, etc.  
 
 In every feature package should contain a class named appropriate to its parent folder, being the model; the controller/services are named (individually) the same across all folders, but separated by package.  
@@ -41,6 +46,8 @@ In every feature package should contain a class named appropriate to its parent 
 A feature may include an `init` class, which contains functions to initialise the feature.  
 
 The program may be run either by directly running `App.java` located under `/SectionB/src/main/java/com/dsaplayer/` or building from source using Maven and running the generated binaries (done automatically under default Maven settings).  
+
+### Build instructions
 
 To build from source, input:
 `mvn clean compile package -f "$<projdir>/SectionB/pom.xml"`  

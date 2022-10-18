@@ -20,6 +20,12 @@ What this additionally means is that this linkedlist is not a single object like
 public class Playlist {
     public Playlist pl;
 
+    String plname;
+
+    // Standard getters/setters
+    public String getPlname()               {return plname;}
+    public void setPlname(String plname)    {this.plname = plname;}
+
     // Implements doubly linked list as an embedded construct
     class PlaylistNode {
         Song song;
@@ -75,7 +81,7 @@ public class Playlist {
     public void dumpList() {
         PlaylistNode curr = head;
         if(head == null) {
-            System.out.println("WARN: Empty DLL!");
+            System.out.println("No playlists available! Create a new one in Playlist Management.");
             return;
         }
 
@@ -83,5 +89,10 @@ public class Playlist {
         while(curr != null) {
             System.out.print(curr.song+" ");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Playlist [Name: "+plname+"]";
     }
 }
