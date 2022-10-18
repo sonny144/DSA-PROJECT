@@ -11,11 +11,11 @@ public class CLI {
     
     public static void mainMenu() {
         System.out.println(
-                "---------------"
-            +   "DSAPlayer CLI"
+                "---------------\n"
+            +   "DSAPlayer CLI\n"
             +   "---------------"
-            +   "1 - Playlist management"
-            +   "2 - Play menu"
+            +   "1 - Playlist management\n"
+            +   "2 - Play menu\n"
         );
         
         try {
@@ -42,16 +42,16 @@ public class CLI {
 
     public static void playlistMenu() {
         System.out.println(
-                "---------------"
-            +   "Playlist Manager"
-            +   "---------------"
-            +   "1 - List all playlists"
-            +   "2 - List all songs in playlist"
-            +   "3 - Search playlists"
-            +   "4 - Search for song in playlist"
-            +   "5 - Create new playlist"
-            +   "6 - Add new song to playlist"
-            +   "0 - [DEBUG] Create sample playlist with 100 songs"
+                "---------------\n"
+            +   "Playlist Manager\n"
+            +   "---------------\n"
+            +   "1 - List all playlists\n"
+            +   "2 - List all songs in playlist\n"
+            +   "3 - Search playlists\n"
+            +   "4 - Search for song in playlist\n"
+            +   "5 - Create new playlist\n"
+            +   "6 - Add new song to playlist\n"
+            +   "0 - [DEBUG] Create sample playlist with 100 songs\n"
         );
         
         try {
@@ -99,11 +99,11 @@ public class CLI {
 
     public static void playMenu() {
         System.out.println(
-                "---------------"
-            +   "Play Menu"
-            +   "---------------"
-            +   "1 - Play (linear)"
-            +   "2 - Play (loop)"
+                "---------------\n"
+            +   "Play Menu\n"
+            +   "---------------\n"
+            +   "1 - Play (linear)\n"
+            +   "2 - Play (loop)\n"
         );
 
         try {
