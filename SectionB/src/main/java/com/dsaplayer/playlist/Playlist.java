@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.dsaplayer.song.Song;
 
@@ -18,6 +20,8 @@ What this additionally means is that this linkedlist is not a single object like
     in Java but rather a loosely-connected group of objects.
 */
 public class Playlist {
+    public static List<Playlist> plGlobal = new ArrayList<>();
+    
     public Playlist pl;
 
     String plname;
