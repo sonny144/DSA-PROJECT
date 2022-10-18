@@ -71,4 +71,17 @@ public class Playlist {
     public Song get(int i) {
         return pl.get(i);
     }
+
+    public void dumpList() {
+        PlaylistNode curr = head;
+        if(head == null) {
+            System.out.println("WARN: Empty DLL!");
+            return;
+        }
+
+        System.out.println("Nodes of DLL: ");
+        while(curr != null) {
+            System.out.print(curr.song+" ");
+        }
+    }
 }
