@@ -169,7 +169,7 @@ public class CLI {
                         Song prev = psv.findParentBySong(pl, song).getPrev().getSong();
                         play(pl, prev, repeat);
                     }
-                    System.out.print("Invalid selection!");
+                    System.out.println("Invalid selection!");
                     break;
                 case 2:
                     if(repeat == true && psv.findParentBySong(pl, song).getNext() == null) {
@@ -179,7 +179,7 @@ public class CLI {
                         Song next = psv.findParentBySong(pl, song).getNext().getSong();
                         play(pl, next, repeat);
                     }
-                    System.out.print("Invalid selection!");
+                    System.out.println("Invalid selection!");
                     break;
                 default:
                     System.out.println("Invalid selection!");
