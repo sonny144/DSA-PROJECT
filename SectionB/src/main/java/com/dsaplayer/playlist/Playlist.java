@@ -28,7 +28,7 @@ public class Playlist {
     public void setPlname(String j)         {this.plname = j;}
 
     // Implements doubly linked list as an embedded construct
-    class PlaylistNode {
+    public class PlaylistNode {
         Song song;
         PlaylistNode prev;  // Previous node
         PlaylistNode next;  // Next node
@@ -54,6 +54,11 @@ public class Playlist {
 
     // Function used to add new nodes; detects if linkedlist is headless and defines new head if so
     PlaylistNode head, tail = null;
+
+    // heh
+    public PlaylistNode getHead() {return head;}
+    public PlaylistNode getTail() {return tail;}
+
     public void addNode(Song song) {
         PlaylistNode pn = new PlaylistNode(song);
 

@@ -140,6 +140,59 @@ public class CLI {
         }
     }
 
+    public static void play(Playlist pl, Song song, boolean repeat) {
+        System.out.println(
+                "-------------------------------\n"
+            +   "NOW PLAYING\n"
+            +   "   "+song.getName()+"\n"
+            +   "       by"+song.getArtist()+"\n"
+            +   "-------------------------------\n"
+            +   (psv.findParentBySong(pl, song).getPrev() != null || repeat == true ?
+                "1 - Previous"+" | ":"")
+            +   (psv.findParentBySong(pl, song).getNext() != null || repeat == true ?
+                "2 - Next\n" : "\n")
+            +   "0 - Back to menu\n"
+        );
+
+        try {
+            System.out.print("Input number of selection: "); int in = sc.nextInt();
+
+            switch (in) {
+                case 0:
+                    mainMenu();
+                    break;
+                case 1:
+                    if(repeat == true && psv.findParentBySong(pl, song).getPrev() == null) {
+                        Song prev = pl.getTail().getSong();
+                        play(pl, prev, repeat);
+                    } else if(psv.findParentBySong(pl, song).getPrev() != null)  {
+                        Song prev = psv.findParentBySong(pl, song).getPrev().getSong();
+                        play(pl, prev, repeat);
+                    }
+                    System.out.print("Invalid selection!");
+                    break;
+                case 2:
+                    if(repeat == true && psv.findParentBySong(pl, song).getNext() == null) {
+                        Song next = pl.getHead().getSong();
+                        play(pl, next, repeat);
+                    } else if(psv.findParentBySong(pl, song).getNext() != null)  {
+                        Song next = psv.findParentBySong(pl, song).getNext().getSong();
+                        play(pl, next, repeat);
+                    }
+                    System.out.print("Invalid selection!");
+                    break;
+                default:
+                    System.out.println("Invalid selection!");
+                    mainMenu();
+                    break;
+            } playMenu();
+            
+        } catch(InputMismatchException ex) {
+            System.out.println("Invalid input type!");
+            sc.nextLine();
+            playMenu();
+        }
+    }
     public static void playMenu() {
         System.out.println(
                 "-------------------------------\n"
@@ -158,10 +211,16 @@ public class CLI {
                     mainMenu();
                     break;
                 case 1:
-                    playMenu();
+                    System.out.print("Input playlist name: ");
+                    Playlist plLin = psv.findPlaylistByName(sc.next());
+                    if (plLin == null) {System.out.print("No hits found!"); break;}
+                    play(plLin, plLin.getHead().getSong(), false);
                     break;
                 case 2:
-                    playMenu();
+                    System.out.print("Input playlist name: ");
+                    Playlist plRep = psv.findPlaylistByName(sc.next());
+                    if (plRep == null) {System.out.print("No hits found!"); break;}
+                    play(plRep, plRep.getHead().getSong(), true);
                     break;
                 default:
                     System.out.println("Invalid selection!");
