@@ -1,0 +1,16 @@
+PlayRepeat( )
+START
+ currentnode = front
+    IF front ==null
+    Display “The playlist is empty”
+  ESLE
+    DOWHILE currentnode. nextAddress !=null //moves until the next track
+     currentnode = currentnode.nextAddress
+       DOHWHILE currentnode!=null //makes sure that there is a track
+         Display currentnode.data  // play the particular song
+    currentnode = currentnode.prevAddress // need to go back to the previous track to    display it
+   ENDIF
+    ENDWHILE
+ENDWHILE
+END
+
