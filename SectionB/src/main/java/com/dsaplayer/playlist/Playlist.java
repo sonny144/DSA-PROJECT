@@ -1,12 +1,11 @@
 package com.dsaplayer.playlist;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+// import java.io.BufferedReader;
+// import java.io.File;
+// import java.io.FileInputStream;
+// import java.io.IOException;
+// import java.io.InputStreamReader;
+// import java.util.ArrayList;
 
 import com.dsaplayer.song.Song;
 
@@ -20,8 +19,6 @@ What this additionally means is that this linkedlist is not a single object like
     in Java but rather a loosely-connected group of objects.
 */
 public class Playlist {
-    public static List<Playlist> plGlobal = new ArrayList<>();
-    
     public Playlist pl;
 
     String plname;
@@ -65,22 +62,17 @@ public class Playlist {
         }
     }
 
-    // Inserts song with new filename based on playlist file j
-    public void insertSong(File file, String nm) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+    // // Inserts song with new filename based on playlist file j
+    // public void insertSong(File file, String nm) throws IOException {
+    //     BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 
-        String j = null;    // Init to prevent exception
-        while((j = br.readLine()) != null) {
-            pl.addNode(new Song(j, nm));
-        }
+    //     String j = null;    // Init to prevent exception
+    //     while((j = br.readLine()) != null) {
+    //         pl.addNode(new Song(j, nm));
+    //     }
 
-        br.close();
-    }
-
-    // Returns song at node i
-    public Song get(int i) {
-        return pl.get(i);
-    }
+    //     br.close();
+    // }
 
     public void dumpList() {
         PlaylistNode curr = head;
@@ -91,7 +83,8 @@ public class Playlist {
 
         System.out.println("Nodes of DLL: ");
         while(curr != null) {
-            System.out.print(curr.song+" ");
+            System.out.println(curr.song.getArtist()+" "+curr.song.getName());
+            curr = curr.next;
         }
     }
 

@@ -1,5 +1,6 @@
 package com.dsaplayer.playlist;
 
+import com.dsaplayer.App;
 import com.dsaplayer.playlist.Playlist.PlaylistNode;
 
 public class PlaylistService {
@@ -22,10 +23,15 @@ public class PlaylistService {
     }
 
     public Playlist findPlaylistByName(String pln) {
-        if(Playlist.plGlobal != null) {
-            for(int i = 0; i <= Playlist.plGlobal.size() - 1; i++) {
-                if(Playlist.plGlobal.get(i).plname == pln) {
-                    return Playlist.plGlobal.get(i);
+        System.out.println("test1");
+        if(App.plGlobal != null) {
+            System.out.println("test2");
+            for(int i = 0; i <= App.plGlobal.size() - 1; i++) {
+                System.out.println("test3");
+                System.out.println("*"+App.plGlobal.get(i).getPlname()+"*&*"+pln+"*");
+                if(App.plGlobal.get(i).getPlname().equals(pln)) {
+                    System.out.println("!!HIT!!");
+                    return App.plGlobal.get(i);
                 }
             }
             return null;
@@ -35,8 +41,8 @@ public class PlaylistService {
     }
 
     public Playlist givePlaylist(int i) {
-        if(Playlist.plGlobal != null) {
-            return Playlist.plGlobal.get(i);
+        if(App.plGlobal != null) {
+            return App.plGlobal.get(i);
         } else {
             return null;
         }
@@ -44,7 +50,7 @@ public class PlaylistService {
 
     // Ugly little static output function
     public void dumpSongsInPlaylist(Playlist pl) {
-        if(Playlist.plGlobal != null) {
+        if(App.plGlobal != null && pl.head != null) {
             PlaylistNode curr = pl.head;
         
             while(curr != null) {

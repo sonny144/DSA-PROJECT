@@ -22,7 +22,7 @@ public class CLI {
         );
         
         try {
-            int in = sc.nextInt();
+            System.out.print("Input number of selection: "); int in = sc.nextInt();
 
             switch (in) {
                 case 1:
@@ -59,21 +59,21 @@ public class CLI {
         );
         
         try {
-            int in = sc.nextInt();
+            System.out.print("Input number of selection: "); int in = sc.nextInt();
 
             switch (in) {
                 case 0:
                     mainMenu();
                     break;
                 case 1:
-                    if(Playlist.plGlobal.isEmpty() == true) {System.out.println("No playlists available!"); break;}
-                    for(int i = 0; i <= Playlist.plGlobal.size() - 1; i++) {
+                    if(App.plGlobal.isEmpty() == true) {System.out.println("No playlists available!"); break;}
+                    for(int i = 0; i <= App.plGlobal.size() - 1; i++) {
                         System.out.println(i+" - "+psv.givePlaylist(i).getPlname());
                     }
                     break;
                 case 2:
                     System.out.print("Input playlist name: ");
-                    Playlist pldump = psv.findPlaylistByName(sc.next());
+                    Playlist pldump = psv.findPlaylistByName(sc.next()); if (pldump == null) System.out.println("WARN: Null pldump!");
 
                     psv.dumpSongsInPlaylist(pldump);
                     break;
@@ -81,11 +81,10 @@ public class CLI {
                     playMenu();
                     break;
                 case 4:
-                    // TODO: this needs to generate anonymous objects!!
                     System.out.print("Input playlist name: ");
                     Playlist plnNew = new Playlist(); plnNew.setPlname(sc.next());    // Creates new playlist *object* with name inputted; no nodes!
 
-                    Playlist.plGlobal.add(plnNew);
+                    App.plGlobal.add(plnNew);
                     System.out.println("Playlist created! Add songs in the menu.");
                     break;
                 case 5:
@@ -104,12 +103,12 @@ public class CLI {
                     System.out.print("Input playlist name: ");
                     Playlist pldbg = new Playlist(); pldbg.setPlname(sc.next());
                     
-                    for(int i = 0; i < 100; i++) {
+                    for(int i = 0; i <= 100; i++) {
                         Song dbgSong = new Song("song"+Integer.toString(i), "artist"+Integer.toString(i)); // Automatically defines e.g. song1, song2, etc.
                         pldbg.addNode(dbgSong);
                     }
 
-                    Playlist.plGlobal.add(pldbg);
+                    App.plGlobal.add(pldbg);
 
                     System.out.println("Debug playlist created!\n");
                     break;
@@ -135,7 +134,7 @@ public class CLI {
         );
 
         try {
-            int in = sc.nextInt();
+            System.out.print("Input number of selection: "); int in = sc.nextInt();
 
             switch (in) {
                 case 0:
