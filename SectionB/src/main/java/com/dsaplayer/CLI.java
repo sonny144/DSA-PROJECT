@@ -4,13 +4,13 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.dsaplayer.playlist.Playlist;
-import com.dsaplayer.playlist.Service;
+import com.dsaplayer.playlist.PlaylistService;
 import com.dsaplayer.song.Song;
 
 // Controller for the command line interface.
 public class CLI {
     static Scanner sc = new Scanner(System.in);
-    static Service sv = new Service();
+    static PlaylistService psv = new PlaylistService();
     
     public static void mainMenu() {
         System.out.println(
@@ -66,10 +66,16 @@ public class CLI {
                     mainMenu();
                     break;
                 case 1:
-                    playlistMenu();
+                    if(Playlist.plGlobal.isEmpty() == true) {System.out.println("No playlists available!"); break;}
+                    for(int i = 0; i <= Playlist.plGlobal.size() - 1; i++) {
+                        System.out.println(i+" - "+psv.givePlaylist(i).getPlname());
+                    }
                     break;
                 case 2:
-                    playMenu();
+                    System.out.print("Input playlist name: ");
+                    Playlist pldump = psv.findPlaylistByName(sc.next());
+
+                    psv.dumpSongsInPlaylist(pldump);
                     break;
                 case 3:
                     playMenu();
@@ -77,13 +83,14 @@ public class CLI {
                 case 4:
                     // TODO: this needs to generate anonymous objects!!
                     System.out.print("Input playlist name: ");
-                    Playlist pln = new Playlist(); pln.setPlname(sc.next());    // Creates new playlist *object* with name inputted; no nodes!
+                    Playlist plnNew = new Playlist(); plnNew.setPlname(sc.next());    // Creates new playlist *object* with name inputted; no nodes!
 
+                    Playlist.plGlobal.add(plnNew);
                     System.out.println("Playlist created! Add songs in the menu.");
                     break;
                 case 5:
                     System.out.print("Input playlist name to add to: ");
-                    Playlist plAdd = sv.findPlaylist(sc.next());
+                    Playlist plAdd = psv.findPlaylistByName(sc.next());
                     System.out.print("Input song name and author: ");
                     Song newSong = new Song(sc.next(), sc.next());
 
@@ -104,7 +111,7 @@ public class CLI {
 
                     Playlist.plGlobal.add(pldbg);
 
-                    System.out.print("Debug playlist created!");
+                    System.out.println("Debug playlist created!\n");
                     break;
                 default:
                     System.out.println("Invalid selection!");
@@ -135,7 +142,7 @@ public class CLI {
                     mainMenu();
                     break;
                 case 1:
-                    playlistMenu();
+                    playMenu();
                     break;
                 case 2:
                     playMenu();

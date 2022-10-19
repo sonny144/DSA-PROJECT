@@ -1,7 +1,7 @@
 package com.dsaplayer.song;
 
 // class for all song-related functions
-public class Service {
+public class SongService {
     private Song sn;
 
     // for debug; prints song obj's details
