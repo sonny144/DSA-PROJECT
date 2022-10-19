@@ -33,6 +33,10 @@ public class Playlist {
         PlaylistNode prev;  // Previous node
         PlaylistNode next;  // Next node
 
+        public Song getSong()               {return song;}
+        public void setSong(Song sn)        {this.song = sn;}
+
+
         // Technical override; defines data of dll
         public PlaylistNode(Song song) {
             this.song = song;

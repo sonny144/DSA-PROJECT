@@ -51,7 +51,7 @@ public class CLI {
             +   "0 - Return to main menu\n"
             +   "1 - List all playlists\n"
             +   "2 - List all songs in playlist\n"
-            +   "3 - Search for song in playlist\n"
+            +   "3 - Search for song/artist in playlist\n"
             +   "4 - Create new playlist\n"
             +   "5 - Add new song to playlist\n"
             +   "6 - Remove song from playlist\n"
@@ -73,26 +73,32 @@ public class CLI {
                     break;
                 case 2:
                     System.out.print("Input playlist name: ");
-                    Playlist pldump = psv.findPlaylistByName(sc.next()); if (pldump == null) System.out.println("WARN: Null pldump!");
+                    Playlist pldump = psv.findPlaylistByName(sc.next());
+                    if (pldump == null) {System.out.print("No hits found!"); break;}
 
                     psv.dumpSongsInPlaylist(pldump);
                     break;
                 case 3:
-                    playMenu();
+                    System.out.print("Input playlist name: ");
+                    Playlist plSearch = psv.findPlaylistByName(sc.next());
+                    System.out.print("Input keyword: ");
+                    String key = sc.next();
+
+                    
                     break;
                 case 4:
                     System.out.print("Input playlist name: ");
                     Playlist plnNew = new Playlist(); plnNew.setPlname(sc.next());    // Creates new playlist *object* with name inputted; no nodes!
-
                     App.plGlobal.add(plnNew);
+
                     System.out.println("Playlist created! Add songs in the menu.");
                     break;
                 case 5:
                     System.out.print("Input playlist name to add to: ");
                     Playlist plAdd = psv.findPlaylistByName(sc.next());
-                    System.out.print("Input song name and author: ");
+                    if (plAdd == null) {System.out.print("No hits found!"); break;}
                     Song newSong = new Song(sc.next(), sc.next());
-
+                    
                     plAdd.addNode(newSong);
                     System.out.println("Song added successfully!");
                     break;

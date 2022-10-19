@@ -5,7 +5,7 @@ import com.dsaplayer.playlist.Playlist.PlaylistNode;
 
 public class PlaylistService {
     // create_playlist as shown in pseudocode is located in Playlist.java due to access issues
-    public void playTrack(Playlist pl, String key) {
+    public void playLinear(Playlist pl) {
         
     }
 
@@ -23,20 +23,30 @@ public class PlaylistService {
     }
 
     public Playlist findPlaylistByName(String pln) {
-        System.out.println("test1");
         if(App.plGlobal != null) {
-            System.out.println("test2");
             for(int i = 0; i <= App.plGlobal.size() - 1; i++) {
-                System.out.println("test3");
-                System.out.println("*"+App.plGlobal.get(i).getPlname()+"*&*"+pln+"*");
                 if(App.plGlobal.get(i).getPlname().equals(pln)) {
-                    System.out.println("!!HIT!!");
                     return App.plGlobal.get(i);
                 }
             }
             return null;
         } else {
             return null;
+        }
+    }
+
+    public void searchPlaylist(Playlist pl, String key) {
+        if(App.plGlobal != null) {
+            PlaylistNode curr = pl.head; int check = 0;
+            while(curr != null) {
+                if(curr.getSong().getName().contains(key) || curr.getSong().getArtist().contains(key)) {
+                    System.out.println(check+" - "+curr.getSong().getName);
+                    check++;
+                }
+            }
+            System.out.println(check+" results found");
+        } else {
+            System.out.println("WARN: No playlists exist");
         }
     }
 
