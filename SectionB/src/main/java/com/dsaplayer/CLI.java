@@ -145,7 +145,7 @@ public class CLI {
                 "-------------------------------\n"
             +   "NOW PLAYING\n"
             +   "   "+song.getName()+"\n"
-            +   "       by"+song.getArtist()+"\n"
+            +   "       by "+song.getArtist()+"\n"
             +   "-------------------------------\n"
             +   (psv.findParentBySong(pl, song).getPrev() != null || repeat == true ?
                 "1 - Previous"+" | ":"")
