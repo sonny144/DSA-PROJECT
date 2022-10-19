@@ -25,7 +25,7 @@ public class Playlist {
 
     // Standard getters/setters
     public String getPlname()               {return plname;}
-    public void setPlname(String plname)    {this.plname = plname;}
+    public void setPlname(String j)         {this.plname = j;}
 
     // Implements doubly linked list as an embedded construct
     class PlaylistNode {
@@ -34,8 +34,12 @@ public class Playlist {
         PlaylistNode next;  // Next node
 
         public Song getSong()               {return song;}
-        public void setSong(Song sn)        {this.song = sn;}
+        public void setSong(Song j)         {this.song = j;}
 
+        public PlaylistNode getPrev()       {return prev;}
+        public void setPrev(PlaylistNode j) {this.prev = j;}
+        public PlaylistNode getNext()       {return next;}
+        public void setNext(PlaylistNode j) {this.next = j;}
 
         // Technical override; defines data of dll
         public PlaylistNode(Song song) {

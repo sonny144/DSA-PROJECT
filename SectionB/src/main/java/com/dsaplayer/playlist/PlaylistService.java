@@ -2,6 +2,7 @@ package com.dsaplayer.playlist;
 
 import com.dsaplayer.App;
 import com.dsaplayer.playlist.Playlist.PlaylistNode;
+import com.dsaplayer.song.Song;
 
 public class PlaylistService {
     // create_playlist as shown in pseudocode is located in Playlist.java due to access issues
@@ -9,17 +10,28 @@ public class PlaylistService {
         
     }
 
-    public boolean findSong(Playlist pl, String key) {
+    public Song findSong(Playlist pl, String keyname, String keyart) {
         PlaylistNode curr = pl.head;
 
         while(curr != null) {
-            if (curr.song.getName() == key) {
-                return true;
+            if (curr.getSong().getName() == keyname && curr.getSong().getArtist() == keyart) {
+                return curr.getSong();
             }
-
-            curr = curr.next;
+            curr = curr.next != null ? curr.next : null;
         }
-        return false;
+        return null;
+    }
+
+    public PlaylistNode findSongParent(Playlist pl, String keyname, String keyart) {
+        PlaylistNode curr = pl.head;
+
+        while(curr != null) {
+            if (curr.getSong().getName() == keyname && curr.getSong().getArtist() == keyart) {
+                return curr;
+            }
+            curr = curr.next != null ? curr.next : null;
+        }
+        return null;
     }
 
     public Playlist findPlaylistByName(String pln) {
@@ -40,9 +52,10 @@ public class PlaylistService {
             PlaylistNode curr = pl.head; int check = 0;
             while(curr != null) {
                 if(curr.getSong().getName().contains(key) || curr.getSong().getArtist().contains(key)) {
-                    System.out.println(check+" - "+curr.getSong().getName);
+                    System.out.println(check+" | "+curr.getSong().getArtist()+" - "+curr.getSong().getName());
                     check++;
                 }
+                curr = curr.next != null ? curr.next : null; // Elvis conditional to set curr to null if next doesn't exist
             }
             System.out.println(check+" results found");
         } else {
@@ -65,11 +78,15 @@ public class PlaylistService {
         
             while(curr != null) {
                 int i = 0;
-                System.out.println(i+" - "+curr.song.getArtist()+" - "+curr.song.getName()); i++;
+                System.out.println(i+" | "+curr.song.getArtist()+" - "+curr.song.getName()); i++;
                 curr = curr.next != null ? curr.next : null; // Elvis conditional to set curr to null if next doesn't exist
             }
         } else {
             System.out.println("Empty playlist!");
         }
+    }
+
+    public void deleteSong(PlaylistNode pl) {
+        pl.setSong(null); pl.next.setPrev(pl.prev); pl.prev.setNext(pl.next);
     }
 }

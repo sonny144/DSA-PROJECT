@@ -14,9 +14,9 @@ public class CLI {
     
     public static void mainMenu() {
         System.out.println(
-                "---------------\n"
+                "-------------------------------\n"
             +   "DSAPlayer CLI\n"
-            +   "---------------\n"
+            +   "-------------------------------\n"
             +   "1 - Playlist management\n"
             +   "2 - Play menu\n"
         );
@@ -39,15 +39,16 @@ public class CLI {
 
         } catch(InputMismatchException ex) {
             System.out.println("Invalid input type!");
+            sc.nextLine();
             mainMenu();
         }
     }
 
     public static void playlistMenu() {
         System.out.println(
-                "---------------\n"
+                "-------------------------------\n"
             +   "Playlist Manager\n"
-            +   "---------------\n"
+            +   "-------------------------------\n"
             +   "0 - Return to main menu\n"
             +   "1 - List all playlists\n"
             +   "2 - List all songs in playlist\n"
@@ -84,7 +85,7 @@ public class CLI {
                     System.out.print("Input keyword: ");
                     String key = sc.next();
 
-                    
+                    psv.searchPlaylist(plSearch, key);
                     break;
                 case 4:
                     System.out.print("Input playlist name: ");
@@ -97,13 +98,22 @@ public class CLI {
                     System.out.print("Input playlist name to add to: ");
                     Playlist plAdd = psv.findPlaylistByName(sc.next());
                     if (plAdd == null) {System.out.print("No hits found!"); break;}
+                    System.out.print("Input song name and artist: ");
                     Song newSong = new Song(sc.next(), sc.next());
                     
                     plAdd.addNode(newSong);
                     System.out.println("Song added successfully!");
                     break;
                 case 6:
-                    playMenu();
+                    System.out.print("Input playlist name to remove from: ");
+                    Playlist plDel = psv.findPlaylistByName(sc.next());
+                    if (plDel == null) {System.out.print("No hits found!"); break;}
+                    System.out.print("Input song name and artist: ");
+                    String keyname = sc.next(); String keyart = sc.next();
+                    if (psv.findSong(plDel, keyname, keyart) == null) {System.out.print("No hits found!"); break;}
+                    
+                    psv.deleteSong(psv.findSongParent(plDel, keyname, keyart));
+                    System.out.println("Song removed successfully!");
                     break;
                 case 99:
                     System.out.print("Input playlist name: ");
@@ -125,15 +135,16 @@ public class CLI {
 
         } catch(InputMismatchException ex) {
             System.out.println("Invalid input type!");
+            sc.nextLine();
             playlistMenu();
         }
     }
 
     public static void playMenu() {
         System.out.println(
-                "---------------\n"
+                "-------------------------------\n"
             +   "Play Menu\n"
-            +   "---------------\n"
+            +   "-------------------------------\n"
             +   "0 - Return to main menu\n"
             +   "1 - Play (linear)\n"
             +   "2 - Play (loop)\n"
@@ -160,7 +171,9 @@ public class CLI {
             
         } catch(InputMismatchException ex) {
             System.out.println("Invalid input type!");
+            sc.nextLine();
             playMenu();
         }
     }
 }
+
