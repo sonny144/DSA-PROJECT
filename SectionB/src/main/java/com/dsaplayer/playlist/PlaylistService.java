@@ -34,6 +34,18 @@ public class PlaylistService {
         return null;
     }
 
+    public PlaylistNode findParentBySong(Playlist pl, Song song) {
+        PlaylistNode curr = pl.head;
+
+        while(curr != null) {
+            if (curr.getSong().equals(song)) {
+                return curr;
+            }
+            curr = curr.next != null ? curr.next : null;
+        }
+        return null;
+    }
+
     public Playlist findPlaylistByName(String pln) {
         if(App.plGlobal != null) {
             for(int i = 0; i <= App.plGlobal.size() - 1; i++) {
