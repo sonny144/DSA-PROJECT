@@ -63,6 +63,8 @@ where `$<projdir>` is the path to the root of your clone.
 - `Service` files include all functions for managing a feature unless otherwise specified, such as in the case of above
 - `Playlist` is an obj with a name and x number of `PlaylistNode`s; `plGlobal` is an arraylist with y number of `Playlist`s
 - All playlists are stored in `plGlobal`
+- Playing func is stubbed; under normal circumstances it would continue to next track on EOD (End Of Data); manual progression is required
+- Selecting previous when at first entry and playing on repeat will loop back to tail and vice versa
 
 ## Members
 
