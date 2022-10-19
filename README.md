@@ -28,7 +28,10 @@ SectionB                // May contain configuration files, such as pom.xml; the
 
 ## Section A
 
-Note that some algorithms present in Section B may not correlate one-to-one with entries in Section A due to nuance in implementation.
+### Documentation notes
+
+- Some algorithms present in Section B may not correlate one-to-one with entries in Section A due to nuance in implementation
+- `old_ref_flow.png` in root of `SectionA` contains general use flow created for prev. assignment as reference
 
 ## Section B
 
@@ -57,7 +60,9 @@ where `$<projdir>` is the path to the root of your clone.
 
 - `DLL` = Doubly Linked List (not lib)
 - The function for adding songs to playlist is contained in `Playlist.java` as it is necessary for the class to refer to itself to alter entries in the DLL
-- `Service` files include all functions for managing a feature unless otherwise specified, such as in the case of above.
+- `Service` files include all functions for managing a feature unless otherwise specified, such as in the case of above
+- `Playlist` is an obj with a name and x number of `PlaylistNode`s; `plGlobal` is an arraylist with y number of `Playlist`s
+- All playlists are stored in `plGlobal`
 
 ## Members
 
